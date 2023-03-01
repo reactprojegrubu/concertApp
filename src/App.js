@@ -1,12 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
-//seçil
-//bertan
+import { Search } from "./search";
+import { ConcertList } from "./concertList";
+import { ConcertAdd } from "./ConcertAdd";
+
+
 function App() {
+
   return (
-    <div className="App">
-     //değiştiridim
+    <div >
+     <h1>hello wolrd</h1>
+     <Search />
+     <ConcertList />
+     <ConcertAdd />
+     
     </div>
+    
   );
 }
 
