@@ -1,3 +1,4 @@
+import axios from "axios";
 import { createContext, useState } from "react";
 
 const ConcertContext = createContext();
@@ -9,6 +10,7 @@ function Provider({ children }){
     const [location, setLocation] = useState("")
     const [artistName, setArtistName] = useState("")
     const [price, setPrice] = useState("")
+    const [url, setUrl] = useState(`https://picsum.photos/seed/123432/300/200`);
     const [age, setAge] = useState("")
     const [isOpen, setIsOpen] = useState(false);
 
@@ -75,6 +77,7 @@ function Provider({ children }){
         createConcert,
         fetchConcerts,
         deleteConcerts,
+        updateConcerts
     }
     return <ConcertContext.Provider value={valuesToShare}>{children}</ConcertContext.Provider>
 }
