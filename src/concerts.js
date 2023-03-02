@@ -5,6 +5,7 @@ const ConcertContext = createContext();
 function Provider({ children }){
     const [concerts, setConcerts] = useState([]);
     const [name, setName] = useState("konser 1")
+    const [date, setDate] = useState("");
     const [location, setLocation] = useState("")
     const [artistName, setArtistName] = useState("")
     const [price, setPrice] = useState("")
@@ -34,6 +35,25 @@ function Provider({ children }){
         await axios.delete(`http://127.0.0.1:3001/data/${id}`)
         const updatedConcerts = concerts.filter((item)=>{
             return item.id !== id
+        })
+        setConcerts(updatedConcerts)
+      }
+
+      const updateConcerts =async(id, newname, newlocation, newartistName, newprice, newage, newdate, newUrl)=>{
+        const responce =await axios.put(`http://127.0.0.1:3001/data/${id}`,{
+            name: newname,
+            location: newlocation,
+            artistName: newartistName,
+            price: newprice,
+            age: newage,
+            date: newdate,
+            url: newUrl
+        })
+        const updatedConcerts = concerts.map((data)=>{
+            if(data.id ===id){
+                return {...data, ...responce.data}
+            }
+            return data
         })
         setConcerts(updatedConcerts)
       }
