@@ -26,6 +26,17 @@ function Provider({ children }){
         setConcerts(newConcerts);
         console.log(concerts);
       };
+      const fetchConcerts = async () => {
+        const responce = await axios.get("http://127.0.0.1:3001/data");
+        setConcerts(responce.data);
+      };
+      const deleteConcerts = async (id)=>{
+        await axios.delete(`http://127.0.0.1:3001/data/${id}`)
+        const updatedConcerts = concerts.filter((item)=>{
+            return item.id !== id
+        })
+        setConcerts(updatedConcerts)
+      }
 
 
     const valuesToShare={
@@ -41,7 +52,9 @@ function Provider({ children }){
         setPrice,
         isOpen,
         setIsOpen,
-        createConcert
+        createConcert,
+        fetchConcerts,
+        deleteConcerts,
     }
     return <ConcertContext.Provider value={valuesToShare}>{children}</ConcertContext.Provider>
 }
