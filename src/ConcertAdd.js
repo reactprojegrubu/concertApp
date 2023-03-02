@@ -3,11 +3,35 @@ import ConcertContext from './concerts';
 import Popup from './Popup'
 
 export function ConcertAdd(){
-    const {isOpen,setIsOpen} = useContext(ConcertContext)
+  const {isOpen,setIsOpen,name,date,location,artistName,price,age,setName,setDate,setArtistName,setLocation,setPrice,setAge,createConcert,url,setUrl} = useContext(ConcertContext)
+  
+  const togglePopup = () => {
+      setIsOpen(!isOpen);
+      setAge(false)
+    }
+  const handleName=(event)=>{
+      setName(event.target.value)
+  }
+  const handleDate=(event)=>{
+      setDate(event.target.value)
+  }
+  const handleArtistName=(event)=>{
+    setArtistName(event.target.value)
+  }
+  const handleLocation=(event)=>{
+    setLocation(event.target.value)
+  }
+  const handlePrice=(event)=>{
+    setPrice(event.target.value)
+  }
+  const handleUrl=(event)=>{
+    setUrl(event.target.value)
+  }
+  const handleage = () => { 
+  
+    setAge(p=>!p) 
     
-    const togglePopup = () => {
-        setIsOpen(!isOpen);
-      }
+  }; 
 
     return(
         <div>
