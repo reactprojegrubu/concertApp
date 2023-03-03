@@ -1,16 +1,21 @@
 import { Search } from "./search";
-import { ConcertList } from "./concertList";
 import { ConcertAdd } from "./ConcertAdd";
+import { useContext, useEffect } from "react";
+import ConcertContext from "./concerts";
 
 
 function App() {
+const {fetchConcerts,concerts} = useContext(ConcertContext)
+
+  useEffect(()=>{
+    fetchConcerts()
+  },[])
 
   return (
     <div >
-     <h1>hello wolrd</h1>
-     <Search />
-     <ConcertList />
-     <ConcertAdd />
+     <h1>hello world</h1>
+     <Search details={concerts} />
+      <ConcertAdd />
      
     </div>
     
