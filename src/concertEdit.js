@@ -33,3 +33,24 @@ export function ConcertEdit({concert,onSubmit}){
   const handleAge=(event)=>{  
     setAge(event.target.checked)
   }
+  const handleSubmit=(event)=>{
+    event.preventDefault()
+    onSubmit()
+    updateConcerts(concert.id,title,location,artistName2,price,age,date,url)
+  }
+
+  return(  
+    <form className="book-edit" onSubmit={handleSubmit}>
+      <label>title</label>
+      <input className="input" value={title} onChange={handleChange} />
+      <input type={"date"} className="input" value={date} onChange={handleDate} />
+      <input className="input" value={artistName2} onChange={handleArtistName} />
+      <input className="input" value={location} onChange={handleLocation} />
+      <input className="input" value={price} onChange={handlePrice} />
+      <input className="input" value={url} onChange={handleUrl} />
+      <input type={"checkbox"} className="input" value={age} onChange={handleAge} />yaş sınırı
+      
+      <button className="button is-primary"  >save</button>
+    </form>
+  )
+}
