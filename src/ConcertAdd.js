@@ -32,7 +32,16 @@ export function ConcertAdd(){
     setAge(p=>!p) 
     
   }; 
-
+  const handleSubmit =(event)=>{
+    event.preventDefault()
+    createConcert(name,location,artistName,price,age,date,url)
+    setName("")
+    setArtistName("")
+    setLocation("")
+    setPrice("")
+    setAge(false)
+    togglePopup()
+  }
     return(
         <div>
             <input
@@ -45,8 +54,25 @@ export function ConcertAdd(){
       content={<>
         <b>Konser ekleme sayfası</b>
         <p>kayıt için gerekli bilgiler kısmı</p>
-        <input type="text" placeholder='konser adı' />
-        <button>kayıt ekle</button>
+        <div>
+        <input type="text" placeholder='etkinlik adı' value={name} onChange={handleName} />
+        <br />
+        <input type="date" placeholder='tarih' onSelect={handleDate} />
+        <br />
+        <input type="text" placeholder='sanatçı adı' value={artistName} onChange={handleArtistName} />
+        <br />
+        <input type="text" placeholder='lokasyon' value={location} onChange={handleLocation}/>
+        <br />
+        <input type="text" placeholder='ücret' value={price} onChange={handlePrice} />
+        <br />
+        <input type="text" placeholder='url' value={url} onChange={handleUrl} />
+        <br />
+        <p>yaş sınırı olacak mı
+        <input type="checkbox" onChange={handleage} />
+        </p>
+        <button onClick={handleSubmit} >kayıt ekle</button>
+        </div>
+   
       </>}
       handleClose={togglePopup}
     />}
