@@ -12,11 +12,16 @@ const {fetchConcerts,concerts} = useContext(ConcertContext)
   },[])
 
   return (
-    <div >
-     <h1>hello world</h1>
-     <Search details={concerts} />
+    <div>
+      <div className="header">
+        <img className="logo" src="/best.jpg" alt="best logosu" />
+        <div className="title-container">
+          <h1 className="title">hello world</h1>
+          <h1 className="title">concert app</h1>
+        </div>
+      </div>
+      <Search details={concerts} />
       <ConcertAdd />
-     
     </div>
     
   );
