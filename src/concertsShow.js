@@ -4,7 +4,7 @@ import { useContext } from "react";
 import ConcertContext from "./concerts";
 
 export function Concerts({ concert, deleteConcerts }) {
-  const { age } = useContext(ConcertContext);
+  const { setAge } = useContext(ConcertContext);
   const [showEdit, setShowEdit] = useState(false);
 
   const edit = () => {
