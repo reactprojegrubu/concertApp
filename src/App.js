@@ -15,7 +15,6 @@ function App() {
       <h1>hello world</h1>
       <h1>concert app</h1>
       <Search details={concerts} />
-
       <ConcertAdd />
     </div>
   );
